@@ -1,5 +1,5 @@
 import KoaRouter from 'koa-router';
-import axios from 'axios';
+import request from 'request-promise';
 import directory from '../serviceDiscovery';
 
 const serviceList = directory();
@@ -26,9 +26,7 @@ app.get('/sample', async (ctx, next) => {
   
   console.log(`Accessing ${endpoint}`);
 
-  let values = await axios.get(endpoint);
-
-  ctx.body = await values.data;
+  ctx.body = await request(endpoint);
 
   await next();
 });

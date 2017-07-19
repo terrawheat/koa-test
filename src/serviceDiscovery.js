@@ -1,4 +1,4 @@
-import axios from 'axios';
+import request from 'request-promise';
 
 let directory;
 
@@ -7,7 +7,10 @@ export default async function () {
     return directory;
   }
 
-  directory = await axios.get('http://localhost:27285/api/directory');
+  directory = await request({
+    uri: 'http://localhost:27285/api/directory',
+    json: true
+  });
 
-  return directory.data;
+  return directory;
 }
