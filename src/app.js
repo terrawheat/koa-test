@@ -8,7 +8,7 @@ import Routes from './routes/routes';
 const app = new Koa()
   .use(bodyParser())
   .use(genericSession())
-  .use(Auth)
+  // .use(Auth)
   .use(Routes.routes());
 
   app.listen(3000);
